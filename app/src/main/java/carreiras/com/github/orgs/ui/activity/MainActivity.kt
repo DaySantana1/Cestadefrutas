@@ -1,38 +1,31 @@
-package carreiras.com.github.orgs.ui.activity
+package com.example.orgs
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
-import carreiras.com.github.orgs.R
-import carreiras.com.github.orgs.dao.ProdutosDao
-import carreiras.com.github.orgs.ui.recyclerview.adapter.ListaProdutosAdapter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import android.widget.TextView
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.orgs.ui.theme.OrgsTheme
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
-
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-    }
+        setContentView(R.layout.activity_main)
 
-    override fun onResume() {
-        super.onResume()
+        val nome =findViewById<TextView>(R.id.nome)
+        nome.text = "Cesta de frutas"
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        val dao = ProdutosDao()
+        val descricao =findViewById<TextView>(R.id.descricao)
+        descricao.text = "Laranja e Uva"
 
-        Log.i("FormularioProduto", "onCreate: ${dao.buscaTodos()}")
-
-        recyclerView.adapter = ListaProdutosAdapter(
-            context = this,
-            produtos = dao.buscaTodos()
-        )
-
-        val fab = findViewById<FloatingActionButton>(R.id.floatingActionButton)
-        fab.setOnClickListener {
-            val intent = Intent(this, FormularioProdutoActivity::class.java)
-            startActivity(intent)
-        }
+        val valor =findViewById<TextView>(R.id.nome)
+        valor.text = "19.99"
     }
 }
+
